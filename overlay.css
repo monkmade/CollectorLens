@@ -1,0 +1,22 @@
+/* CollectorLens overlay — dezent, modern, gut leserlich. */
+.cl-badge {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 6px 0 2px;
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 11px;
+  line-height: 1.3;
+}
+.cl-tag {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.cl-id    { background: #eef2f7; color: #334155; }
+.cl-key   { background: #fde68a; color: #7c5800; }
+.cl-range { background: #dcfce7; color: #166534; }
+.cl-warn  { background: #fee2e2; color: #991b1b; font-weight: 500; }
+.cl-muted { background: #f1f5f9; color: #94a3b8; font-weight: 500; }

@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "CollectorLens — Comic Value for eBay",
+  "version": "0.1.0",
+  "description": "Inline-Overlay fuer eBay-Comic-Listings: Sold-Comps-Range, Key-Issue-Marker und Editions-Warnung – ohne Tab-Wechsel. Gratis, kein Konto.",
+  "host_permissions": ["https://www.ebay.com/*"],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.ebay.com/sch/*",
+        "https://www.ebay.com/itm/*",
+        "https://www.ebay.com/b/*"
+      ],
+      "js": ["parser.js", "content.js"],
+      "css": ["overlay.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["key-issues.json"],
+      "matches": ["https://www.ebay.com/*"]
+    }
+  ]
+}
