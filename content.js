@@ -87,10 +87,10 @@
     if (comps === "pending") {
       parts.push('<span class="cl-tag cl-range cl-muted">Sold-Comps …</span>');
     } else if (comps === "err" || !comps || !comps.length) {
-      parts.push('<span class="cl-tag cl-range cl-muted">keine Comps gefunden</span>');
+      parts.push('<span class="cl-tag cl-range cl-muted">No comps found</span>');
     } else {
       parts.push('<span class="cl-tag cl-range">Sold-Range ' + money(comps[0]) + "–" + money(comps[comps.length - 1]) + " · " + comps.length + " Comps</span>");
-      parts.push('<span class="cl-tag cl-warn">⚠️ Edition prüfen (Original vs. Reprint/Facsimile)</span>');
+      parts.push('<span class="cl-tag cl-warn">⚠️ Check edition (Original vs. Reprint/Facsimile)</span>');
     }
     b.innerHTML = parts.join("");
   }
