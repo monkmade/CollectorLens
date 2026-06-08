@@ -24,7 +24,7 @@
         "https://www.ebay.com/itm/*",
         "https://www.ebay.com/b/*"
       ],
-      "js": ["parser.js", "content.js"],
+      "js": ["config.js", "parser.js", "content.js"],
       "css": ["overlay.css"],
       "run_at": "document_idle"
     }

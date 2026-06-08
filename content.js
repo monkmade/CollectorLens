@@ -22,6 +22,7 @@
   var queue = [];
   var active = 0;
   var MAX = 2;                // höflich zu eBay (§20, kein Rate-Limit-Risiko)
+  var proShown = false;       // §14 demand probe: at most one Pro pill per page, only after real value
 
   function pump() {
     while (active < MAX && queue.length) {
@@ -91,8 +92,23 @@
     } else {
       parts.push('<span class="cl-tag cl-range">Sold-Range ' + money(comps[0]) + "–" + money(comps[comps.length - 1]) + " · " + comps.length + " Comps</span>");
       parts.push('<span class="cl-tag cl-warn">⚠️ Check edition (Original vs. Reprint/Facsimile)</span>');
+      if (!proShown) {
+        var pu = proUrl();
+        if (pu) {
+          proShown = true;
+          parts.push('<a class="cl-tag cl-pro" href="' + pu + '" target="_blank" rel="noopener noreferrer">⭐ Pro coming - interested?</a>');
+        }
+      }
     }
     b.innerHTML = parts.join("");
+    var proEl = b.querySelector(".cl-pro");
+    if (proEl) proEl.addEventListener("click", function (e) { e.stopPropagation(); });
+  }
+
+  // §14 demand probe target; pill stays hidden until a real URL is set in config.js.
+  function proUrl() {
+    var u = CL.PRO_INTEREST_URL;
+    return (u && u.indexOf("REPLACE_ME") === -1) ? u : null;
   }
 
   function process(card) {
