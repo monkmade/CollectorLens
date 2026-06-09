@@ -1,0 +1,109 @@
+<!doctype html>
+<!--
+  CollectorLens — Store screenshot 1 "Hero" (1280×800).
+  Real overlay.css pills + real DOM structure over a GENERIC marketplace mock
+  (no eBay logo/trademark, no real cover art, no account/PII). Numbers are ILLUSTRATIVE
+  examples of the feature (the extension computes real ranges live) — format matches the
+  2026-06-08 live-verified output "Sold-Range $25–$600 · 57 Comps".
+  Render: Edge/Chrome headless --window-size=1280,800.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1280px; height: 800px; overflow: hidden; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: #eef1f6; }
+
+  .cap {
+    height: 132px; background: linear-gradient(100deg, #3730a3 0%, #4f46e5 100%); color: #fff;
+    display: flex; align-items: center; gap: 18px; padding: 0 48px;
+  }
+  .mark { width: 60px; height: 60px; border-radius: 14px; background: #fff; flex: none;
+    display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,.22); }
+  .mark svg { width: 40px; height: 40px; }
+  .cap .txt b { display: block; font-size: 30px; font-weight: 800; letter-spacing: -0.4px; }
+  .cap .txt span { font-size: 19px; color: #dbeafe; }
+  .cap .txt span .g { color: #86efac; font-weight: 700; }
+
+  .grid { display: flex; gap: 26px; padding: 40px 48px; }
+  .card { flex: 1 1 0; background: #fff; border: 1px solid #e5e7eb; border-radius: 14px;
+    padding: 16px; box-shadow: 0 10px 26px rgba(15,23,42,.07); }
+  .cover { height: 300px; border-radius: 9px; margin-bottom: 13px; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 55%, #475569 100%);
+    display: flex; align-items: center; justify-content: center; }
+  .cover .slabtag { position: absolute; top: 11px; left: 11px; background: rgba(255,255,255,.15);
+    color: #fff; font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 6px; letter-spacing: .4px; }
+  .cover .glyph { color: rgba(255,255,255,.28); font-size: 92px; font-weight: 800; }
+  .ttl { font-size: 16px; font-weight: 600; color: #1558d6; line-height: 1.3; margin-bottom: 5px;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 42px; }
+  .meta { font-size: 13px; color: #64748b; margin-bottom: 7px; }
+  .price { font-size: 21px; font-weight: 800; color: #0f172a; }
+
+  /* ===== Real overlay.css pills (verbatim from overlay.css, font nudged for store legibility) ===== */
+  .cl-badge { display: flex; flex-wrap: wrap; gap: 4px; margin: 10px 0 2px;
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; font-size: 12px; line-height: 1.3; }
+  .cl-tag { display: inline-block; padding: 3px 8px; border-radius: 999px; font-weight: 600; white-space: nowrap; }
+  .cl-id   { background: #eef2f7; color: #334155; }
+  .cl-key  { background: #fde68a; color: #7c5800; }
+  .cl-range{ background: #dcfce7; color: #166534; }
+  .cl-warn { background: #fee2e2; color: #991b1b; font-weight: 500; }
+  .cl-muted{ background: #f1f5f9; color: #94a3b8; font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="cap">
+    <div class="mark">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="13" cy="13" r="10" fill="none" stroke="#3730a3" stroke-width="2.6"/>
+        <line x1="20.5" y1="20.5" x2="28" y2="28" stroke="#3730a3" stroke-width="3.4" stroke-linecap="round"/>
+        <text x="13" y="18.5" font-size="13" font-weight="800" fill="#16a34a" text-anchor="middle" font-family="Arial">$</text>
+      </svg>
+    </div>
+    <div class="txt">
+      <b>See the sold-comps range before you bid</b>
+      <span>CollectorLens adds the price <span class="g">range</span>, key-issue flags &amp; an edition warning — right on the listing.</span>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="cover"><span class="slabtag">CGC 9.8</span><span class="glyph">★</span></div>
+      <div class="ttl">Amazing Spider-Man #300 CGC 9.8 — graded</div>
+      <div class="meta">Pre-Owned · Graded slab</div>
+      <div class="price">$2,450.00</div>
+      <div class="cl-badge">
+        <span class="cl-tag cl-id">CGC 9.8 · #300</span>
+        <span class="cl-tag cl-key">🔑 1st full Venom</span>
+        <span class="cl-tag cl-range">Sold-Range $1,400–$2,600 · 23 Comps</span>
+        <span class="cl-tag cl-warn">⚠️ Check edition (Original vs. Reprint/Facsimile)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="cover"><span class="slabtag">CGC 9.6</span><span class="glyph">★</span></div>
+      <div class="ttl">New Mutants #98 CGC 9.6 — 1st Deadpool</div>
+      <div class="meta">Pre-Owned · Graded slab</div>
+      <div class="price">$899.00</div>
+      <div class="cl-badge">
+        <span class="cl-tag cl-id">CGC 9.6 · #98</span>
+        <span class="cl-tag cl-key">🔑 1st Deadpool</span>
+        <span class="cl-tag cl-range">Sold-Range $700–$1,300 · 18 Comps</span>
+        <span class="cl-tag cl-warn">⚠️ Check edition (Original vs. Reprint/Facsimile)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="cover"><span class="slabtag">CBCS 9.8</span><span class="glyph">★</span></div>
+      <div class="ttl">Spawn #1 CBCS 9.8 — 1992 first print</div>
+      <div class="meta">Pre-Owned · Graded slab</div>
+      <div class="price">$120.00</div>
+      <div class="cl-badge">
+        <span class="cl-tag cl-id">CBCS 9.8 · #1</span>
+        <span class="cl-tag cl-key">🔑 1992 1st Spawn</span>
+        <span class="cl-tag cl-range cl-muted">No comps found</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

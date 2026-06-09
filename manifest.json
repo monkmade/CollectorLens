@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "CollectorLens — Comic Value for eBay",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Inline overlay for eBay comic listings: sold-comps range, key-issue marker, edition warning - no tab switching. Free, no account.",
   "icons": {
     "16": "icons/icon16.png",
@@ -24,7 +24,7 @@
         "https://www.ebay.com/itm/*",
         "https://www.ebay.com/b/*"
       ],
-      "js": ["config.js", "parser.js", "content.js"],
+      "js": ["config.js", "parser.js", "review.js", "content.js"],
       "css": ["overlay.css"],
       "run_at": "document_idle"
     }

@@ -99,6 +99,8 @@
           parts.push('<a class="cl-tag cl-pro" href="' + pu + '" target="_blank" rel="noopener noreferrer">⭐ Pro coming - interested?</a>');
         }
       }
+      // §-Review-Prompt: echter Mehrwert geliefert -> diese Seite als erfolgreiche Nutzung zählen.
+      if (CL.noteSuccess) CL.noteSuccess();
     }
     b.innerHTML = parts.join("");
     var proEl = b.querySelector(".cl-pro");
