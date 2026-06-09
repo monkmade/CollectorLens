@@ -1,0 +1,89 @@
+<!doctype html>
+<!--
+  CollectorLens — Store screenshot 2 "The RANGE" (1280×800).
+  Emphasizes the core honesty feature: a sold-comps price RANGE, not one possibly-wrong number.
+  Real overlay.css pills + real DOM. Generic mock, no PII. Numbers ILLUSTRATIVE (format real).
+  Render: Edge/Chrome headless --window-size=1280,800.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1280px; height: 800px; overflow: hidden; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background: radial-gradient(120% 120% at 80% 0%, #eef2ff 0%, #e7ebf3 60%, #dfe4ee 100%);
+    display: flex; flex-direction: column; align-items: center; }
+
+  .cap { text-align: center; margin-top: 56px; }
+  .cap b { display: block; font-size: 34px; font-weight: 800; color: #1e1b4b; letter-spacing: -0.5px; }
+  .cap span { font-size: 19px; color: #475569; }
+  .cap span .hi { color: #166534; font-weight: 700; }
+
+  .stage { position: relative; margin-top: 44px; width: 620px; }
+  .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 16px; padding: 20px;
+    box-shadow: 0 26px 60px rgba(30,27,75,.16); }
+  .head { display: flex; gap: 16px; margin-bottom: 14px; }
+  .cover { width: 150px; height: 200px; border-radius: 10px; flex: none; position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 55%, #475569 100%);
+    display: flex; align-items: center; justify-content: center; }
+  .cover .slabtag { position: absolute; top: 9px; left: 9px; background: rgba(255,255,255,.15);
+    color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
+  .cover .glyph { color: rgba(255,255,255,.28); font-size: 58px; font-weight: 800; }
+  .info .ttl { font-size: 19px; font-weight: 600; color: #1558d6; line-height: 1.3; margin-bottom: 6px; }
+  .info .meta { font-size: 14px; color: #64748b; margin-bottom: 10px; }
+  .info .price { font-size: 26px; font-weight: 800; color: #0f172a; }
+
+  /* Real overlay.css pills (verbatim; scaled up for a close-up). */
+  .cl-badge { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 2px;
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; font-size: 15px; line-height: 1.3; }
+  .cl-tag { display: inline-block; padding: 5px 12px; border-radius: 999px; font-weight: 600; white-space: nowrap; }
+  .cl-id   { background: #eef2f7; color: #334155; }
+  .cl-key  { background: #fde68a; color: #7c5800; }
+  .cl-range{ background: #dcfce7; color: #166534; }
+  .cl-warn { background: #fee2e2; color: #991b1b; font-weight: 500; }
+  .cl-range.spot { outline: 3px solid #22c55e; outline-offset: 3px; box-shadow: 0 6px 18px rgba(22,101,52,.28); }
+
+  /* Callouts */
+  .callout { position: absolute; font-size: 14px; font-weight: 600; color: #166534;
+    background: #fff; border: 1.5px solid #bbf7d0; border-radius: 10px; padding: 8px 12px;
+    box-shadow: 0 8px 20px rgba(22,101,52,.14); max-width: 230px; line-height: 1.35; }
+  .c-min { right: -210px; top: 250px; }
+  .c-min .k { color: #0f172a; }
+  .note { position: absolute; left: -232px; top: 250px; width: 214px; font-size: 14px; font-weight: 600;
+    color: #3730a3; background: #fff; border: 1.5px solid #c7d2fe; border-radius: 10px; padding: 10px 12px;
+    box-shadow: 0 8px 20px rgba(55,48,163,.14); line-height: 1.4; }
+</style>
+</head>
+<body>
+  <div class="cap">
+    <b>A price <span style="color:#166534">range</span> — not one possibly-wrong number</b>
+    <span>Issue + grade alone can mix an original with a cheap reprint. <span class="hi">A wrong number is worse than none.</span></span>
+  </div>
+
+  <div class="stage">
+    <div class="note">Honest by design: shows the span of real sold listings, then tells you to verify the edition.</div>
+
+    <div class="card">
+      <div class="head">
+        <div class="cover"><span class="slabtag">CGC 9.8</span><span class="glyph">★</span></div>
+        <div class="info">
+          <div class="ttl">Venom: Lethal Protector #1 CGC 9.8</div>
+          <div class="meta">Pre-Owned · Graded slab · Top Rated Seller</div>
+          <div class="price">$165.00</div>
+        </div>
+      </div>
+      <div class="cl-badge">
+        <span class="cl-tag cl-id">CGC 9.8 · #1</span>
+        <span class="cl-tag cl-key">🔑 1993 1st Venom solo</span>
+        <span class="cl-tag cl-range spot">Sold-Range $90–$240 · 36 Comps</span>
+        <span class="cl-tag cl-warn">⚠️ Check edition (Original vs. Reprint/Facsimile)</span>
+      </div>
+    </div>
+
+    <div class="callout c-min">
+      <span class="k">min–max</span> of recent eBay <b>sold</b> listings for the same issue &amp; grade — and how many.
+    </div>
+  </div>
+</body>
+</html>

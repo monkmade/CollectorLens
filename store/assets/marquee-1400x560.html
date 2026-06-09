@@ -1,0 +1,107 @@
+<!doctype html>
+<!--
+  CollectorLens — Chrome Web Store "Marquee promo tile" (1400×560).
+  Brand: monkmade / collectorlens.app. Left: value prop. Right: product UI (real overlay pills).
+  Render: Edge/Chrome headless --window-size=1400,560. Pure CSS, no external assets.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1400px; height: 560px; overflow: hidden; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background: radial-gradient(120% 140% at 70% 12%, #4f46e5 0%, #3730a3 55%, #312e81 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+    gap: 64px;
+  }
+  .left { flex: 1 1 0; max-width: 640px; }
+  .row { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
+  .mark {
+    width: 64px; height: 64px; border-radius: 16px; background: #fff;
+    display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,.25);
+  }
+  .mark svg { width: 42px; height: 42px; }
+  .brand { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; }
+  .brand .app { color: #c7d2fe; font-weight: 600; }
+  h1 { font-size: 44px; font-weight: 800; line-height: 1.12; letter-spacing: -0.6px; margin-bottom: 22px; }
+  h1 .g { color: #86efac; }
+  p.sub { font-size: 20px; line-height: 1.5; color: #e0e7ff; max-width: 560px; margin-bottom: 30px; }
+  .feats { display: flex; flex-direction: column; gap: 12px; }
+  .feat { display: flex; align-items: center; gap: 12px; font-size: 18px; color: #eef2ff; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: #86efac; flex: none; }
+  .feat .em { font-weight: 700; color: #fff; }
+
+  /* Right: a real eBay-style listing card with the actual overlay badge. */
+  .right { flex: none; width: 470px; }
+  .card {
+    background: #fff; border-radius: 16px; box-shadow: 0 24px 60px rgba(0,0,0,.35);
+    padding: 18px; color: #0f172a; transform: rotate(-1.4deg);
+  }
+  .cover {
+    height: 250px; border-radius: 10px; margin-bottom: 14px;
+    background: linear-gradient(135deg, #1e293b 0%, #334155 55%, #475569 100%);
+    display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;
+  }
+  .cover .tag { position: absolute; top: 12px; left: 12px; background: rgba(255,255,255,.14);
+    color: #fff; font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 6px; letter-spacing: .3px; }
+  .cover .glyph { color: rgba(255,255,255,.30); font-size: 80px; font-weight: 800; }
+  .ttl { font-size: 16px; font-weight: 600; color: #1558d6; line-height: 1.3; margin-bottom: 4px; }
+  .meta { font-size: 13px; color: #64748b; margin-bottom: 6px; }
+  .price { font-size: 20px; font-weight: 800; color: #0f172a; }
+
+  /* Real overlay.css pills (copied verbatim from overlay.css). */
+  .cl-badge { display: flex; flex-wrap: wrap; gap: 4px; margin: 10px 0 2px;
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; font-size: 12.5px; line-height: 1.3; }
+  .cl-tag { display: inline-block; padding: 3px 9px; border-radius: 999px; font-weight: 600; white-space: nowrap; }
+  .cl-id   { background: #eef2f7; color: #334155; }
+  .cl-range{ background: #dcfce7; color: #166534; }
+  .cl-warn { background: #fee2e2; color: #991b1b; font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="left">
+    <div class="row">
+      <div class="mark">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="13" cy="13" r="10" fill="none" stroke="#3730a3" stroke-width="2.6"/>
+          <line x1="20.5" y1="20.5" x2="28" y2="28" stroke="#3730a3" stroke-width="3.4" stroke-linecap="round"/>
+          <text x="13" y="18.5" font-size="13" font-weight="800" fill="#16a34a" text-anchor="middle" font-family="Arial">$</text>
+        </svg>
+      </div>
+      <div class="brand">CollectorLens<span class="app"> .app</span></div>
+    </div>
+
+    <h1>Stop opening a second tab<br>for every <span class="g">comic</span>.</h1>
+    <p class="sub">CollectorLens shows the sold-comps price <b>range</b>, key-issue flags and an
+      edition warning inline on eBay comic listings.</p>
+
+    <div class="feats">
+      <div class="feat"><span class="dot"></span><span><span class="em">Range, not a fake number</span> — honest by design</span></div>
+      <div class="feat"><span class="dot"></span><span><span class="em">No account, no server, no tracking</span></span></div>
+      <div class="feat"><span class="dot"></span><span><span class="em">Free</span> — works while you browse</span></div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="card">
+      <div class="cover">
+        <span class="tag">CGC 9.8</span>
+        <span class="glyph">★</span>
+      </div>
+      <div class="ttl">Amazing Spider-Man #1 CGC 9.8 — graded slab</div>
+      <div class="meta">Pre-Owned · Top Rated Seller</div>
+      <div class="price">$549.00</div>
+      <div class="cl-badge">
+        <span class="cl-tag cl-id">CGC 9.8 · #1</span>
+        <span class="cl-tag cl-range">Sold-Range $25–$600 · 57 Comps</span>
+        <span class="cl-tag cl-warn">⚠️ Check edition (Original vs. Reprint/Facsimile)</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

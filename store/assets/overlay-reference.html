@@ -1,0 +1,106 @@
+<!doctype html>
+<!--
+  CollectorLens — Overlay LAYOUT REFERENCE (1280×800), NOT a store screenshot.
+  Shows every real overlay state (the exact DOM content.js builds) + the new review prompt,
+  using the real overlay.css. Internal design sign-off / QA. Numbers illustrative; the
+  "$25–$600 · 57 Comps" example is the 2026-06-08 live-verified output format.
+  Render: Edge/Chrome headless --window-size=1280,800.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1280px; height: 800px; overflow: hidden; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: #f8fafc; color: #0f172a; padding: 34px 44px; }
+  h1 { font-size: 24px; font-weight: 800; }
+  .sub { font-size: 14px; color: #64748b; margin: 4px 0 24px; }
+  .states { display: flex; flex-wrap: wrap; gap: 20px; }
+  .state { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px 18px; width: 560px;
+    box-shadow: 0 8px 20px rgba(15,23,42,.05); }
+  .state .lbl { font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .6px; margin-bottom: 8px; }
+  .listing { font-size: 14px; color: #1558d6; font-weight: 600; }
+  .listing .px { color: #0f172a; font-weight: 800; margin-left: 8px; }
+
+  /* Real overlay.css — verbatim (pills + review toast). */
+  .cl-badge { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 2px;
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; font-size: 11px; line-height: 1.3; }
+  .cl-tag { display: inline-block; padding: 2px 7px; border-radius: 999px; font-weight: 600; white-space: nowrap; }
+  .cl-id   { background: #eef2f7; color: #334155; }
+  .cl-key  { background: #fde68a; color: #7c5800; }
+  .cl-range{ background: #dcfce7; color: #166534; }
+  .cl-warn { background: #fee2e2; color: #991b1b; font-weight: 500; }
+  .cl-muted{ background: #f1f5f9; color: #94a3b8; font-weight: 500; }
+
+  .cl-review { position: absolute; right: 44px; bottom: 40px; z-index: 10; width: 290px; box-sizing: border-box;
+    padding: 14px 16px 13px; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px;
+    box-shadow: 0 8px 28px rgba(15,23,42,.18); font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color: #0f172a; }
+  .cl-review-x { position: absolute; top: 6px; right: 8px; border: 0; background: transparent; color: #94a3b8;
+    font-size: 18px; line-height: 1; cursor: pointer; padding: 2px 4px; }
+  .cl-review-title { font-size: 14px; font-weight: 700; margin: 0 14px 4px 0; }
+  .cl-review-body { font-size: 12.5px; line-height: 1.45; color: #475569; margin-bottom: 12px; }
+  .cl-review-row { display: flex; align-items: center; gap: 10px; }
+  .cl-review-btn { display: inline-block; padding: 7px 14px; border-radius: 8px; background: #4338ca; color: #fff;
+    font-size: 12.5px; font-weight: 600; text-decoration: none; }
+  .cl-review-later { border: 0; background: transparent; color: #64748b; font-size: 12.5px; font-weight: 500; cursor: pointer; padding: 6px 2px; }
+  .tagref { position: absolute; right: 44px; bottom: 196px; font-size: 12px; color: #94a3b8; font-weight: 600; }
+</style>
+</head>
+<body>
+  <h1>CollectorLens — overlay states (layout reference)</h1>
+  <div class="sub">Real <code>overlay.css</code> + the exact DOM <code>content.js</code> builds. Internal QA — not a store screenshot.</div>
+
+  <div class="states">
+    <div class="state">
+      <div class="lbl">Full — graded book, key issue, real comps</div>
+      <div class="listing">Amazing Spider-Man #300 CGC 9.8 <span class="px">$2,450.00</span></div>
+      <div class="cl-badge">
+        <span class="cl-tag cl-id">CGC 9.8 · #300</span>
+        <span class="cl-tag cl-key">🔑 1st full Venom</span>
+        <span class="cl-tag cl-range">Sold-Range $1,400–$2,600 · 23 Comps</span>
+        <span class="cl-tag cl-warn">⚠️ Check edition (Original vs. Reprint/Facsimile)</span>
+      </div>
+    </div>
+
+    <div class="state">
+      <div class="lbl">Range only — no key match (format = 2026-06-08 live-verified)</div>
+      <div class="listing">Graded comic #1 CGC 9.8 <span class="px">$549.00</span></div>
+      <div class="cl-badge">
+        <span class="cl-tag cl-id">CGC 9.8 · #1</span>
+        <span class="cl-tag cl-range">Sold-Range $25–$600 · 57 Comps</span>
+        <span class="cl-tag cl-warn">⚠️ Check edition (Original vs. Reprint/Facsimile)</span>
+      </div>
+    </div>
+
+    <div class="state">
+      <div class="lbl">Honest empty — no comps found (never invents a value, §2)</div>
+      <div class="listing">CBCS 9.6 graded comic #25 <span class="px">$80.00</span></div>
+      <div class="cl-badge">
+        <span class="cl-tag cl-id">CBCS 9.6 · #25</span>
+        <span class="cl-tag cl-range cl-muted">No comps found</span>
+      </div>
+    </div>
+
+    <div class="state">
+      <div class="lbl">Pending — fetching eBay's own sold listings</div>
+      <div class="listing">CGC 9.4 graded comic #15 <span class="px">$300.00</span></div>
+      <div class="cl-badge">
+        <span class="cl-tag cl-id">CGC 9.4 · #15</span>
+        <span class="cl-tag cl-range cl-muted">Sold-Comps …</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tagref">New: one-time review prompt (after 3 successful uses, dismissable) ↓</div>
+  <!-- Exact DOM review.js builds -->
+  <div class="cl-review" role="dialog" aria-label="CollectorLens feedback">
+    <button class="cl-review-x" aria-label="Dismiss">×</button>
+    <div class="cl-review-title">Is CollectorLens useful to you?</div>
+    <div class="cl-review-body">A short, honest review on the Chrome Web Store helps a lot.</div>
+    <div class="cl-review-row">
+      <a class="cl-review-btn" href="#">Leave a review</a>
+      <button class="cl-review-later">Not now</button>
+    </div>
+  </div>
+</body>
+</html>

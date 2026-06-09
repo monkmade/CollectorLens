@@ -1,0 +1,79 @@
+<!doctype html>
+<!--
+  CollectorLens — Chrome Web Store "Small promo tile" (440×280).
+  Brand: monkmade / collectorlens.app. Indigo + white lens + green $ (matches icon128).
+  Render: Edge/Chrome headless --window-size=440,280. Pure CSS, no external assets.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 440px; height: 280px; overflow: hidden; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background: radial-gradient(120% 120% at 78% 18%, #4f46e5 0%, #3730a3 58%, #312e81 100%);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px 32px;
+    position: relative;
+  }
+  .lens {
+    position: absolute;
+    right: -34px;
+    bottom: -34px;
+    width: 210px;
+    height: 210px;
+    opacity: 0.16;
+  }
+  .lens .ring { fill: none; stroke: #fff; stroke-width: 14; }
+  .lens .handle { stroke: #fff; stroke-width: 18; stroke-linecap: round; }
+  .row { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .badge {
+    width: 46px; height: 46px; border-radius: 12px;
+    background: #fff; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 14px rgba(0,0,0,.22);
+  }
+  .badge svg { width: 30px; height: 30px; }
+  .brand { font-size: 26px; font-weight: 800; letter-spacing: -0.4px; }
+  .brand .app { color: #c7d2fe; font-weight: 600; }
+  h1 { font-size: 21px; font-weight: 700; line-height: 1.25; max-width: 330px; margin-bottom: 16px; }
+  h1 .g { color: #86efac; }
+  .pills { display: flex; flex-wrap: wrap; gap: 6px; max-width: 340px; }
+  .pill {
+    font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; white-space: nowrap;
+  }
+  .p-range { background: #dcfce7; color: #166534; }
+  .p-key   { background: #fde68a; color: #7c5800; }
+  .p-warn  { background: #fee2e2; color: #991b1b; }
+</style>
+</head>
+<body>
+  <svg class="lens" viewBox="0 0 200 200" aria-hidden="true">
+    <circle class="ring" cx="78" cy="78" r="58"/>
+    <line class="handle" x1="120" y1="120" x2="170" y2="170"/>
+  </svg>
+
+  <div class="row">
+    <div class="badge">
+      <!-- lens + green $ (brand mark, echoes icon128) -->
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="13" cy="13" r="10" fill="none" stroke="#3730a3" stroke-width="2.6"/>
+        <line x1="20.5" y1="20.5" x2="28" y2="28" stroke="#3730a3" stroke-width="3.4" stroke-linecap="round"/>
+        <text x="13" y="18.5" font-size="13" font-weight="800" fill="#16a34a" text-anchor="middle" font-family="Arial">$</text>
+      </svg>
+    </div>
+    <div class="brand">CollectorLens<span class="app"> .app</span></div>
+  </div>
+
+  <h1>Comic value, right on the <span class="g">eBay</span> listing.</h1>
+
+  <div class="pills">
+    <span class="pill p-range">Sold-Range $25–$600 · 57 Comps</span>
+    <span class="pill p-key">🔑 Key issue</span>
+    <span class="pill p-warn">⚠️ Check edition</span>
+  </div>
+</body>
+</html>
