@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Syntax check (all extension + test JS)
+        run: |
+          set -e
+          for f in *.js tests/*.js; do
+            node --check "$f"
+            echo "OK  $f"
+          done
+
+      - name: Manifest sanity (valid JSON, MV3, narrowest permissions, files exist)
+        run: node tests/manifest.test.js
+
+      - name: Parser unit tests (title parsing, sold-comps URL)
+        run: node tests/parser.test.js
+
+      - name: Review-prompt behavior (once-only, after 3 real uses, no nag)
+        run: node tests/review.test.js
